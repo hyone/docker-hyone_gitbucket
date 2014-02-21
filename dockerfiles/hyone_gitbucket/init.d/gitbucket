@@ -1,0 +1,40 @@
+#!/bin/sh
+
+PIDFILE="/var/run/gitbucket.pid"
+USER="tomcat7"
+
+start() {
+  cd /usr/share/tomcat7
+
+  start-stop-daemon --start --quiet --background -m \
+    --pidfile ${PIDFILE} \
+    --chuid ${USER} \
+    --exec \
+      /usr/bin/java -- \
+        -jar /var/lib/tomcat7/webapps/gitbucket.war \
+        --gitbucket.home=/var/lib/gitbucket \
+        --https=true
+}
+
+stop() {
+   start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+   if [ -e ${PIDFILE} ]
+     then rm ${PIDFILE}
+   fi
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop}"
+    exit 2
+esac
+
+exit $?

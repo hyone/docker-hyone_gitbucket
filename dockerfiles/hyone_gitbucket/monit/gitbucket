@@ -1,0 +1,3 @@
+check process gitbucket with pidfile /var/run/gitbucket.pid
+    start program = "/etc/init.d/gitbucket start"
+    stop  program = "/etc/init.d/gitbucket stop"
