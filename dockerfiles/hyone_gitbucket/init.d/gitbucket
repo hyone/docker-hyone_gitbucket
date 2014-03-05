@@ -12,8 +12,7 @@ start() {
     --exec \
       /usr/bin/java -- \
         -jar /var/lib/tomcat7/webapps/gitbucket.war \
-        --gitbucket.home=/var/lib/gitbucket \
-        --https=true
+        --gitbucket.home=/var/lib/gitbucket
 }
 
 stop() {
