@@ -45,7 +45,7 @@ RSpec.configure do |c|
         }
       )
       puts 'waiting java app server has finished to start...'
-      sleep 10
+      sleep 20
       containers << container
 
       c.ssh.close if c.ssh
