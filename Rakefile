@@ -9,14 +9,21 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 MyDockerRake::Tasks.new do |c|
-  c.image            = 'hyone/gitbucket'
-  c.container        = 'hyone.gitbucket'
-  c.run_options      = '-p 22 -p 2812 -p 8080'
+  c.containers = [
+    {
+      name: 'hyone.gitbucket-data',
+      image: 'hyone/gitbucket-data',
+      protect_deletion: true
+    },
+    {
+      name: 'hyone.gitbucket',
+      image: 'hyone/gitbucket',
+      ports: [22, 2812, 8080],
+      volumes_from: ['hyone.gitbucket-data']
+    }
+  ]
 
-  c.data_image       = 'hyone/gitbucket-data'
-  c.data_container   = 'hyone.gitbucket-data'
-
-  unless has_image?(c.image)
+  unless c.containers.all? { |c| has_image?(c[:image]) }
     task('spec').prerequisites << 'docker:build'
   end
 end
