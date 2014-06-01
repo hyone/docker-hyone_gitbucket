@@ -9,7 +9,7 @@ RUN fakeroot apt-get install -q -y \
       openjdk-7-jre \
       tomcat7 ; \
     cd /var/lib/tomcat7/webapps ; \
-    wget https://github.com/takezoe/gitbucket/releases/download/1.12/gitbucket.war ; \
+    wget https://github.com/takezoe/gitbucket/releases/download/2.0/gitbucket.war ; \
     mkdir /var/lib/gitbucket ; \
     chown tomcat7:tomcat7 -R /var/lib/gitbucket
 
