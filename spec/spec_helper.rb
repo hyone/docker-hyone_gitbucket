@@ -42,7 +42,8 @@ RSpec.configure do |c|
       ).start(
         PortBindings: {
           '22/tcp' => [{HostIp: '0.0.0.0'}]
-        }
+        },
+        Privileged: true
       )
       puts 'waiting java app server has finished to start...'
       sleep 30

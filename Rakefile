@@ -19,7 +19,8 @@ MyDockerRake::Tasks.new do |c|
       name: 'hyone.gitbucket',
       image: 'hyone/gitbucket',
       ports: [22, 2812, 8080],
-      volumes_from: ['hyone.gitbucket-data']
+      volumes_from: ['hyone.gitbucket-data'],
+      options: ['--privileged']
     }
   ]
 
