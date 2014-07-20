@@ -1,3 +1,4 @@
 check process gitbucket with pidfile /var/run/gitbucket.pid
-    start program = "/etc/init.d/gitbucket start"
+    start program = "/etc/init.d/gitbucket start" with timeout 60 seconds
     stop  program = "/etc/init.d/gitbucket stop"
+    if failed port 8080 then restart
