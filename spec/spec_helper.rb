@@ -49,7 +49,7 @@ RSpec.configure do |c|
         Privileged: true
       )
       puts 'waiting java app server has finished to start...'
-      sleep 30
+      sleep 60
       containers << container
 
       c.ssh.close if c.ssh

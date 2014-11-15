@@ -28,6 +28,6 @@ ENV GITBUCKET_DATADIR /var/lib/gitbucket
 
 CMD ["/usr/local/bin/cmd.sh"]
 
-# VOLUME ["/var/lib/gitbucket"]
+VOLUME ["/var/lib/gitbucket"]
 
 EXPOSE 8080
