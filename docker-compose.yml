@@ -1,0 +1,17 @@
+app:
+  build: dockerfiles/hyone_gitbucket/
+  ports:
+    - '8080:8080'
+    - '29418:29418'
+  restart: always
+  volumes_from:
+    - data
+  environment:
+    # to reduce start up time of tomcat
+    JAVA_OPTS: "-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -Xmx1024m -XX:+UseConcMarkSweepGC"
+
+data:
+  image: hyonegitbucket_app
+  volumes:
+    - '/var/lib/gitbucket'
+  command: echo 1
