@@ -17,7 +17,7 @@ $ docker-compose up
 ## Test
 
 ```sh
-$ bundle exec rake spec
+$ bundle exec rspec spec/
 ```
 
 ## Author
