@@ -11,7 +11,7 @@ app:
     JAVA_OPTS: "-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -Xmx1024m -XX:+UseConcMarkSweepGC"
 
 data:
-  image: hyonegitbucket_app
+  build: dockerfiles/hyone_gitbucket/
   volumes:
     - '/var/lib/gitbucket'
   command: echo 1
